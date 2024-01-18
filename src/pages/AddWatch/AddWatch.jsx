@@ -1,6 +1,18 @@
+import { useState } from "react"
 
 
 function AddWatch() {
+  const [formData, setFormData] = useState({
+    brand: "",
+    style: "",
+    movement: "",
+    features: "",
+  })
+
+  const handleChange = e => {
+    console.log(e);
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
   return (
     <div>
       <h1>Add Watch</h1>
@@ -13,7 +25,9 @@ function AddWatch() {
             type="text" 
             className="form-control" 
             id="brand-name" 
-            name="brand" 
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
             required 
           />
         </div>
@@ -25,7 +39,9 @@ function AddWatch() {
             type="text" 
             className="form-control" 
             id="style-input" 
-            name="style" 
+            name="style"
+            value={formData.style}
+            onChange={handleChange}
             required 
           />
         </div>
@@ -37,7 +53,9 @@ function AddWatch() {
             type="text" 
             className="form-control" 
             id="movement-input" 
-            name="movement" 
+            name="movement"
+            value={formData.movement}
+            onChange={handleChange}
             required 
           />
         </div>
@@ -49,7 +67,9 @@ function AddWatch() {
             type="text" 
             className="form-control" 
             id="feature-input" 
-            name="feature" 
+            name="features"
+            value={formData.features}
+            onChange={handleChange}
             required 
           />
         </div>
