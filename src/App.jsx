@@ -5,9 +5,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import AddWatch from './pages/AddWatch/AddWatch'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -37,7 +37,10 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route
+          path="/add"
+          element={<AddWatch />}
+        />
         <Route
           path="/profiles"
           element={

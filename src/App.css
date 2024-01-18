@@ -32,3 +32,77 @@ nav > ul {
   padding: 16px 32px;
 }
 
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 7vmin auto;
+}
+
+.App-header {
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vmin;
+  font-size: 2.5vmin;
+  color: var(--background);
+}
+
+.App main {
+  background-color: var(--background);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.App main h1 {
+  color: var(--secondary-dark);
+  margin-bottom: 5vmin;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
+		'Helvetica Neue', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --black: #07020D;
+  --accent: #5DB7DE;
+  --background: #F1E9DB;
+  --secondary: #A39B8B;
+  --secondary-dark: #716A5C;
+}
+
+a {
+  color: var(--accent);
+  padding: 1vmin;
+  border-radius: 1vmin;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: var(--black);
+  background-color: var(--accent);
+}
+
+a.active {
+  color: var(--background);
+  background-color: var(--black);
+  cursor: default;
+}
+
+nav > a {
+  margin-left: 15px;
+}
+
+.m-left {
+  margin-left: 10px;
+}
