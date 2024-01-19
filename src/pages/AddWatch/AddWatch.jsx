@@ -6,6 +6,7 @@ function AddWatch(props) {
     brand: "",
     style: "",
     movement: "",
+    functionality: "",
     features: "",
   })
 
@@ -33,7 +34,7 @@ function AddWatch(props) {
       <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="brand-name" className="form-label">
-            Watch Brand
+            Watch Brand:
           </label>
           <input 
             type="text" 
@@ -47,38 +48,77 @@ function AddWatch(props) {
         </div>
         <div className="form-group mb-3">
           <label htmlFor="style-input" className="form-label">
-            Watch Style
+            Watch Style:
           </label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="style-input" 
-            name="style"
+          <select
+            className="form-control"
+            name="style" 
+            id="style-input"
             value={formData.style}
             onChange={handleChange}
-            required 
-          />
+            required
+          >
+            <option value="">Please Choose an Option</option>
+            <option value="Dress">Dress</option>
+            <option value="Diver">Diver</option>
+            <option value="Sport">Sport</option>
+            <option value="Field">Field</option>
+            <option value="Smart">Smart</option>
+            <option value="Aviator">Aviator</option>
+            <option value="Military">Military</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Racing">Racing</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Pocket">Pocket</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Wood">Wood</option>
+          </select>
         </div>
         <div className="form-group mb-3">
           <label htmlFor="movement-input" className="form-label">
-            Watch Movement
+            Watch Movement:
           </label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="movement-input" 
-            name="movement"
+          <select
+            className="form-control"
+            name="movement" 
+            id="movement-input"
             value={formData.movement}
             onChange={handleChange}
-            required 
-          />
+            required
+          >
+            <option value="">Please Choose an Option</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Automatic">Automatic</option>
+            <option value="Quartz">Quartz</option>
+            <option value="Solar">Solar</option>
+          </select>
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="functionality-input" className="form-label">
+            Watch Functionality:
+          </label>
+          <select
+            className="form-control"
+            name="functionality" 
+            id="functionality-input"
+            value={formData.functionality}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Please Choose an Option</option>
+            <option value="Analogue">Analogue</option>
+            <option value="Digital">Digital</option>
+            <option value="Chronograph">Chronograph</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
         </div>
         <div className="form-group mb-3">
           <label htmlFor="feature-input" className="form-label">
-            Other Features
+            Other Features:
           </label>
           <input 
-            type="text" 
+            type="text"
             className="form-control" 
             id="feature-input" 
             name="features"
