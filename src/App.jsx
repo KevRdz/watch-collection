@@ -21,7 +21,13 @@ import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [watches, setWatches] = useState([])
+
   const navigate = useNavigate()
+
+  const handleAddWatch = newWatchData => {
+    setWatches([...watches, newWatchData])
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -40,6 +46,7 @@ function App() {
         <Route
           path="/add"
           element={<AddWatch />}
+          handleAddWatch={handleAddWatch}
         />
         <Route
           path="/profiles"

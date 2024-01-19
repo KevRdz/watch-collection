@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 
 
-function AddWatch() {
+function AddWatch(props) {
   const [formData, setFormData] = useState({
     brand: "",
     style: "",
@@ -22,10 +22,15 @@ function AddWatch() {
     console.log(e);
     setFormData({...formData, [e.target.name]: e.target.value})
   }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    props.handleAddWatch(formData)
+  }
   return (
     <div>
       <h1>Add Watch</h1>
-      <form autoComplete="off" ref={formElement}>
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="brand-name" className="form-label">
             Watch Brand
@@ -79,7 +84,6 @@ function AddWatch() {
             name="features"
             value={formData.features}
             onChange={handleChange}
-            required 
           />
         </div>
         <div className="d-grid">
