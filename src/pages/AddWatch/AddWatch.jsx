@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 
 function AddWatch() {
@@ -9,6 +9,15 @@ function AddWatch() {
     features: "",
   })
 
+  const [validForm, setValidForm] = useState(false)
+
+  const formElement = useRef()
+  console.log(formElement);
+
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+
   const handleChange = e => {
     console.log(e);
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -16,7 +25,7 @@ function AddWatch() {
   return (
     <div>
       <h1>Add Watch</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" ref={formElement}>
         <div className="form-group mb-3">
           <label htmlFor="brand-name" className="form-label">
             Watch Brand
@@ -74,7 +83,7 @@ function AddWatch() {
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary-btn-fluid">
+          <button type="submit" className="btn btn-primary-btn-fluid" disabled={!validForm}>
             Add Watch
           </button>
         </div>
