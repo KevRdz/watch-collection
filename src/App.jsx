@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as watchService from './services/watchService'
 
 // styles
 import './App.css'
@@ -25,8 +26,9 @@ function App() {
 
   const navigate = useNavigate()
 
-  const handleAddWatch = newWatchData => {
-    setWatches([...watches, newWatchData])
+  const handleAddWatch = async newWatchData => {
+    const newWatch = await watchService.create(newWatchData)
+    setWatches([...watches, newWatch])
   }
 
   const handleLogout = () => {
