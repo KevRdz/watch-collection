@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 
 
+
 function AddWatch(props) {
   const [formData, setFormData] = useState({
     brand: "",
@@ -114,17 +115,20 @@ function AddWatch(props) {
           </select>
         </div>
         <div className="form-group mb-3">
-          <label htmlFor="feature-input" className="form-label">
+          <label htmlFor="feature-input" className="form-label text-area">
             Other Features:
           </label>
-          <input 
+          <textarea
+            rows={6}
+            cols={50}
             type="text"
-            className="form-control" 
+            className="form-control text-area" 
             id="feature-input" 
             name="features"
             value={formData.features}
             onChange={handleChange}
-          />
+          >
+          </textarea>
         </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary-btn-fluid" disabled={!validForm}>
