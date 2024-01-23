@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AddWatch from './pages/AddWatch/AddWatch'
+import WatchList from './pages/WatchList/WatchList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -25,6 +26,14 @@ function App() {
   const [watches, setWatches] = useState([])
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const fetchAllWatches = async () => {
+      const watchData = await watchService.getAll()
+      setWatches(watchData)
+    }
+    fetchAllWatches()
+  }, [])
 
   const handleAddWatch = async newWatchData => {
     const newWatch = await watchService.create(newWatchData)
@@ -45,6 +54,11 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
+        <Route
+          path="/"
+          element={<WatchList watches={watches} />}
+
+        />
         <Route
           path="/add"
           element={<AddWatch />}
