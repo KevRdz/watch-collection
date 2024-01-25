@@ -35,7 +35,7 @@ function App() {
     fetchAllWatches()
   }, [])
 
-  const handleAddWatch = async newWatchData => {
+  const handleAddWatch = async (newWatchData) => {
     const newWatch = await watchService.create(newWatchData)
     setWatches([...watches, newWatch])
   }
@@ -60,8 +60,7 @@ function App() {
         />
         <Route
           path="/add"
-          element={<AddWatch />}
-          handleAddWatch={handleAddWatch}
+          element={<AddWatch handleAddWatch={handleAddWatch} />}
         />
         <Route
           path="/profiles"

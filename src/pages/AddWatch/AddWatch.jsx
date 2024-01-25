@@ -12,16 +12,13 @@ function AddWatch(props) {
   })
 
   const [validForm, setValidForm] = useState(false)
-
   const formElement = useRef()
-  console.log(formElement);
 
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
   const handleChange = e => {
-    console.log(e);
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
