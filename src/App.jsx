@@ -50,13 +50,17 @@ function App() {
     setUser(authService.getUser())
   }
 
+  const handleDeleteWatch = id => {
+    setWatches(watches.filter(watch => watch._id !== id))
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route
           path="/"
-          element={<WatchList watches={watches} />}
+          element={<WatchList watches={watches} handleDeleteWatch={handleDeleteWatch} />}
         />
         <Route
           path="/add"

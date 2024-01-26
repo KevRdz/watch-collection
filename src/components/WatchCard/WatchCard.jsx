@@ -1,6 +1,6 @@
 
 
-function WatchCard({watch}) {
+function WatchCard({watch, handleDeleteWatch}) {
 return (
     <div className="card">
       <div className="card-body">
@@ -9,6 +9,9 @@ return (
         <p>Movement: {watch.movement}</p>
         <p>Functionality: {watch.functionality}</p>
         <p>Features: {watch.features}</p>
+      </div>
+      <div>
+        <button onClick={() => handleDeleteWatch(watch._id)}>Delete</button>
       </div>
     </div>
   )
