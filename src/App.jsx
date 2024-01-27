@@ -60,7 +60,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<WatchList watches={watches} handleDeleteWatch={handleDeleteWatch} />}
+          element={<WatchList watches={watches} handleDeleteWatch={handleDeleteWatch} user={user}/>}
         />
         <Route
           path="/add"

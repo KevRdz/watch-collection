@@ -1,6 +1,6 @@
 
 
-function WatchCard({watch, handleDeleteWatch}) {
+function WatchCard({watch, handleDeleteWatch, user}) {
 return (
     <div className="card">
       <div className="card-body">
@@ -10,9 +10,11 @@ return (
         <p>Functionality: {watch.functionality}</p>
         <p>Features: {watch.features}</p>
       </div>
-      <div>
-        <button onClick={() => handleDeleteWatch(watch._id)}>Delete</button>
-      </div>
+      {user?.profile === watch.owner._id &&
+        <div>
+          <button onClick={() => handleDeleteWatch(watch._id)}>Delete</button>
+        </div>
+      }
     </div>
   )
 }

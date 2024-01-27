@@ -8,7 +8,7 @@ function WatchList(props) {
       <h1>Watch List</h1>
       <div className={styles.container}>
         {props.watches.map(watch => 
-          <WatchCard key={watch._id} watch={watch} handleDeleteWatch={props.handleDeleteWatch}/>
+          <WatchCard key={watch._id} watch={watch} handleDeleteWatch={props.handleDeleteWatch} user={props.user}/>
         )}
       </div>
     </>
