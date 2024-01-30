@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 function WatchCard({watch, handleDeleteWatch, user}) {
 return (
@@ -12,7 +12,14 @@ return (
       </div>
       {user?.profile === watch.owner._id &&
         <div>
-          <button onClick={() => handleDeleteWatch(watch._id)}>Delete</button>
+          <Link 
+            className="btn btn-sm btn-warning"
+            to="/edit"
+            state={{watch}}
+          >
+            Edit
+          </Link>
+          <button className="btn btn-sm btn-warning" onClick={() => handleDeleteWatch(watch._id)}>Delete</button>
         </div>
       }
     </div>

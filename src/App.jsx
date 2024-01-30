@@ -9,6 +9,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AddWatch from './pages/AddWatch/AddWatch'
 import WatchList from './pages/WatchList/WatchList'
+import EditWatch from './pages/EditWatch/EditWatch'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -66,6 +67,10 @@ function App() {
         <Route
           path="/add"
           element={<AddWatch handleAddWatch={handleAddWatch} />}
+        />
+        <Route
+          path="/edit"
+          element={<EditWatch />}
         />
         <Route
           path="/profiles"
