@@ -50,8 +50,9 @@ function App() {
     setUser(authService.getUser())
   }
 
-  const handleDeleteWatch = id => {
-    setWatches(watches.filter(watch => watch._id !== id))
+  const handleDeleteWatch = async id => {
+    const deleteWatch = await watchService.deleteOne(id)
+    setWatches(watches.filter(watch => watch._id !== deleteWatch._id))
   }
 
   return (
