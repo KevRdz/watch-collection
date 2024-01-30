@@ -1,11 +1,27 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const EditWatch = () => {
+const EditWatch = (props) => {
+  const location = useLocation()
+  const [formData, setFormData] = useState(location.state.watch)
+  const [validForm, setValidForm] = useState(true)
+  const formElement = useRef()
+
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+
+  const handleChange = e => {
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
   return (
     <>
       <h1>Add Watch</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="brand-name" className="form-label">
             Watch Brand:
@@ -15,6 +31,8 @@ const EditWatch = () => {
             className="form-control" 
             id="brand-name" 
             name="brand"
+            value={formData.brand}
+            onChange={handleChange}
             required 
           />
         </div>
@@ -24,8 +42,10 @@ const EditWatch = () => {
           </label>
           <select
             className="form-control"
-            name="style" 
             id="style-input"
+            name="style"
+            value={formData.style}
+            onChange={handleChange}
             required
           >
             <option value="">Please Choose an Option</option>
@@ -51,8 +71,10 @@ const EditWatch = () => {
           </label>
           <select
             className="form-control"
-            name="movement" 
             id="movement-input"
+            name="movement"
+            value={formData.movement}
+            onChange={handleChange}
             required
           >
             <option value="">Please Choose an Option</option>
@@ -68,8 +90,10 @@ const EditWatch = () => {
           </label>
           <select
             className="form-control"
-            name="functionality" 
             id="functionality-input"
+            name="functionality"
+            value={formData.functionality}
+            onChange={handleChange}
             required
           >
             <option value="">Please Choose an Option</option>
@@ -90,11 +114,17 @@ const EditWatch = () => {
             className="form-control text-area" 
             id="feature-input" 
             name="features"
+            value={formData.features}
+            onChange={handleChange}
           >
           </textarea>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary-btn-fluid">
+          <button 
+            type="submit" 
+            className="btn btn-primary-btn-fluid"
+            disabled={!validForm}
+          >
             Save Watch
           </button>
         </div>
