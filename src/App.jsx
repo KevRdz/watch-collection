@@ -56,6 +56,14 @@ function App() {
     setWatches(watches.filter(watch => watch._id !== deleteWatch._id))
   }
 
+  const handleUpdateWatch = updatedWatchFormData => {
+    const newWatchArray = watches.map(watch =>
+      watch._id === updatedWatchFormData._id ? updatedWatchFormData : watch
+    )
+    setWatches(newWatchArray)
+    navigate('/')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -70,7 +78,7 @@ function App() {
         />
         <Route
           path="/edit"
-          element={<EditWatch />}
+          element={<EditWatch handleUpdateWatch={handleUpdateWatch}/>}
         />
         <Route
           path="/profiles"

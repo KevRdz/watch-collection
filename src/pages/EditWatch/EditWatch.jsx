@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const EditWatch = (props) => {
   const location = useLocation()
+  const formElement = useRef()
   const [formData, setFormData] = useState(location.state.watch)
   const [validForm, setValidForm] = useState(true)
-  const formElement = useRef()
 
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
@@ -17,6 +17,7 @@ const EditWatch = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    props.handleUpdateWatch(formData)
   }
   return (
     <>

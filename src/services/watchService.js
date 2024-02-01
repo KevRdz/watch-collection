@@ -29,8 +29,21 @@ async function deleteOne(id) {
   return res.json()
 }
 
+async function update(watch) {
+  const res = await fetch(`${BASE_URL}/${watch._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(watch)
+  })
+  return res.json()
+}
+
 export {
   create,
   getAll,
   deleteOne,
+  update,
 }
