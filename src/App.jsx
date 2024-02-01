@@ -56,9 +56,10 @@ function App() {
     setWatches(watches.filter(watch => watch._id !== deleteWatch._id))
   }
 
-  const handleUpdateWatch = updatedWatchFormData => {
+  const handleUpdateWatch = async updatedWatchData => {
+    const updatedWatch = await watchService.update(updatedWatchData)
     const newWatchArray = watches.map(watch =>
-      watch._id === updatedWatchFormData._id ? updatedWatchFormData : watch
+      watch._id === updatedWatch._id ? updatedWatch : watch
     )
     setWatches(newWatchArray)
     navigate('/')
