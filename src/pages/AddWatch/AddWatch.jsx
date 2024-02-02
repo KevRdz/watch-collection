@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -13,6 +14,7 @@ function AddWatch(props) {
 
   const [validForm, setValidForm] = useState(false)
   const formElement = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
@@ -25,6 +27,7 @@ function AddWatch(props) {
   const handleSubmit = e => {
     e.preventDefault()
     props.handleAddWatch(formData)
+    navigate('/watch')
   }
   return (
     <div>
@@ -59,7 +62,7 @@ function AddWatch(props) {
             <option value="">Please Choose an Option</option>
             <option value="Dress">Dress</option>
             <option value="Diver">Diver</option>
-            <option value="Sport">Sport</option>
+            <option value="Sport/Work">Sport/Work</option>
             <option value="Field">Field</option>
             <option value="Smart">Smart</option>
             <option value="Aviator">Aviator</option>

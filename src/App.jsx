@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Landing from './pages/Landing/Landing'
 import AddWatch from './pages/AddWatch/AddWatch'
 import WatchList from './pages/WatchList/WatchList'
 import EditWatch from './pages/EditWatch/EditWatch'
@@ -39,6 +40,7 @@ function App() {
   const handleAddWatch = async (newWatchData) => {
     const newWatch = await watchService.create(newWatchData)
     setWatches([...watches, newWatch])
+    navigate('/watch')
   }
 
   const handleLogout = () => {
@@ -62,15 +64,16 @@ function App() {
       watch._id === updatedWatch._id ? updatedWatch : watch
     )
     setWatches(newWatchArray)
-    navigate('/')
+    navigate('/watch')
   }
 
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
+        <Route path='/' element={<Landing user={user}/>}/>
         <Route
-          path="/"
+          path="/watch"
           element={<WatchList watches={watches} handleDeleteWatch={handleDeleteWatch} user={user}/>}
         />
         <Route

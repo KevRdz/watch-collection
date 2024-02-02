@@ -52,7 +52,7 @@ const EditWatch = (props) => {
             <option value="">Please Choose an Option</option>
             <option value="Dress">Dress</option>
             <option value="Diver">Diver</option>
-            <option value="Sport">Sport</option>
+            <option value="Sport/Work">Sport/Work</option>
             <option value="Field">Field</option>
             <option value="Smart">Smart</option>
             <option value="Aviator">Aviator</option>
