@@ -4,11 +4,11 @@ function WatchCard({watch, handleDeleteWatch, user}) {
 return (
     <div className="card">
       <div className="card-body">
-        <p>Watch Brand: {watch.brand}</p>
+        <p>Watch Brand/Name: {watch.brand}</p>
         <p>Style: {watch.style}</p>
         <p>Movement: {watch.movement}</p>
         <p>Functionality: {watch.functionality}</p>
-        <p>Features: {watch.features}</p>
+        {watch.features ? <p>Features: {watch.features}</p> : <p></p> }
       </div>
       {user?.profile === watch.owner._id &&
         <div>
