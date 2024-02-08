@@ -12,6 +12,7 @@ function AddWatch(props) {
     features: "",
   })
 
+  const [photoData, setPhotoData] = useState({})
   const [validForm, setValidForm] = useState(false)
   const formElement = useRef()
   const navigate = useNavigate()
@@ -29,6 +30,11 @@ function AddWatch(props) {
     props.handleAddWatch(formData)
     navigate('/watch')
   }
+
+  const handleChangePhoto = e => {
+    setPhotoData({photo: e.target.files[0]})
+  }
+
   return (
     <div>
       <h1>Add Watch</h1>
@@ -129,6 +135,18 @@ function AddWatch(props) {
             onChange={handleChange}
           >
           </textarea>
+        </div>
+        <div>
+          <label htmlFor="photo-upload" className="form-label">
+            Upload Photo
+          </label>
+          <input 
+            type="file"
+            className="form-control"
+            id="photo-upload"
+            name="photo"
+            onChange={handleChangePhoto}
+          />
         </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary-btn-fluid" disabled={!validForm}>
