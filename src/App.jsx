@@ -37,8 +37,11 @@ function App() {
     fetchAllWatches()
   }, [])
 
-  const handleAddWatch = async (newWatchData) => {
+  const handleAddWatch = async (newWatchData, photo) => {
     const newWatch = await watchService.create(newWatchData)
+    if (photo) {
+      newWatch.photo = await watchPhotoHelper(photo, newWatch._id)
+    }
     setWatches([...watches, newWatch])
     navigate('/watch')
   }
@@ -65,6 +68,12 @@ function App() {
     )
     setWatches(newWatchArray)
     navigate('/watch')
+  }
+
+  const watchPhotoHelper = async (photo, id) => {
+    const photoData = new FormData()
+    photoData.append('photo', photo)
+    return await watchService.addPhoto(photoData,id)
   }
 
   return (

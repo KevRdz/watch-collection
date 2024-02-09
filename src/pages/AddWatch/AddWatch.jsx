@@ -27,7 +27,7 @@ function AddWatch(props) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    props.handleAddWatch(formData)
+    props.handleAddWatch(formData, photoData.photo)
     navigate('/watch')
   }
 
